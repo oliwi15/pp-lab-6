@@ -1,28 +1,31 @@
+import java.util.ArrayList;
+import java.util.List;
+
+import company.abstracts.Employee;
 import company.models.Manager;
 import company.models.Worker;
 
 public class Main {
 
     public static void main(String[] args) {
-        Worker worker1 = new Worker("Adam Adamczuk", 4000, 1);
-        Worker worker2 = new Worker("Ola Drozd", 2000, 2);
-        Worker worker3 = new Worker("Monika Musiałek", 5000, 3);
-        Worker worker4 = new Worker("Tomasz Kot", 3000, 4);
-        Manager manager = new Manager("Sara Parker", 3100, 5);
+        Worker worker1 = new Worker("Adam Adamczuk", 4000, 1, "2022-01-01", "Junior Java ");
+        Worker worker2 = new Worker("Ola Drozd", 2000, 2, "2022-02-15", "Senior  Phyton");
+        Worker worker3 = new Worker("Monika Musiałek", 5000, 3, "2022-03-20", " Javascript ");
+        Worker worker4 = new Worker("Tomasz Kot", 3000, 4, "2022-04-10", " Sql");
+        Manager manager = new Manager("Sara Parker", 3100, 5, "2022-05-01", "IT ");
 
-        System.out.println("Worker 1 Salary: " + worker1.getSalary());
-        worker1.work();
+        List<Employee> employees = new ArrayList<>();
+        employees.add(worker1);
+        employees.add(worker2);
+        employees.add(worker3);
+        employees.add(worker4);
+        employees.add(manager);
 
-        System.out.println("Worker 2 Salary: " + worker2.getSalary());
-        worker2.work();
-
-        System.out.println("Worker 3 Salary: " + worker3.getSalary());
-        worker3.work();
-
-        System.out.println("Worker 4 Salary: " + worker4.getSalary());
-        worker4.work();
-
-        System.out.println("Manager Salary: " + manager.getSalary());
-        manager.work();
+        for (Employee employee : employees) {
+            System.out.println("- " + employee.getName() + " (ID: " + employee.hashCode() +
+                    ", Position: " + employee.getPosition() + ", Hire date: " +
+                    employee.getHireDate() + ", Salary: " + employee.getSalary() + ")");
+            employee.work();
+        }
     }
 }
